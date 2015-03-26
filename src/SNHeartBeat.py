@@ -63,13 +63,12 @@ class SNHeartBeat(object):
 
 class SNThunderProtocol(SNHeartBeat):
 
-    def __init__(self, username, ipaddress, timestamp, version=SNClient['CLIENT_VERSION']):
+    def __init__(self, username, ipaddress, timestamp, keepalive_data, version=SNClient['CLIENT_VERSION']):
         #timestamp = 1424526603
         attribute_list = [
             SNAttribute.CLIENT_IP_ADDRESS(ipaddress),
             SNAttribute.CLIENT_VERSION(version),
-            SNAttribute.KEEPALIVE_DATA(
-                SNAttribute.KEEPALIVE_DATA.get_keepalive_data(timestamp)),
+            SNAttribute.KEEPALIVE_DATA(keepalive_data),
             SNAttribute.KEEPALIVE_TIME(timestamp),
             SNAttribute.USER_NAME(username),
         ]
@@ -89,5 +88,31 @@ class SNRegister_Bubble(SNHeartBeat):
 
 
 if __name__ == '__main__':
-    pass
 
+    kpalive_data = None
+    last_kpalive_data = "test"
+    is_lost = False
+
+    for x in xrange(10):
+        timestamp = 0x55140712 + 180 * x
+        kpalive_data = SNAttribute.KEEPALIVE_DATA.get_keepalive_data(
+            timestamp=timestamp, last_data=last_kpalive_data)
+        print '%.8x' % timestamp, kpalive_data, last_kpalive_data
+
+        tp = SNThunderProtocol(
+            '18058054395@HYXY.XY', '10.8.0.6', timestamp, kpalive_data, version='1.2.17.24')
+        data_to_send = tp.digest()
+
+        # sendto...
+        # recvfrom...
+        if x == 1: # for test
+            is_lost = True
+        elif x == 3:
+            is_lost = False
+
+        if not is_lost:
+            last_kpalive_data = kpalive_data
+
+        print tp.hexdigest()
+
+        time.sleep(1)
