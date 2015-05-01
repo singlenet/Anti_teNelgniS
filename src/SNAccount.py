@@ -14,7 +14,7 @@ def calc_pin(username, share_key=NKAccount['SHARE_KEY'], prefix='\x0D\x0A'):
     username = username.upper()
 
     time_div_by_five = int(time.time()) / 5
-    #time_div_by_five = 285403685
+    time_div_by_five = 285403685
     print time_div_by_five, share_key
 
     time_hash = [0] * 4
@@ -44,4 +44,4 @@ def calc_pin(username, share_key=NKAccount['SHARE_KEY'], prefix='\x0D\x0A'):
     return pin
 
 if __name__ == '__main__':
-    print calc_pin(username='18058058888@HYXY.XY')
+    print calc_pin(username='18058054395@HYXY.XY')
