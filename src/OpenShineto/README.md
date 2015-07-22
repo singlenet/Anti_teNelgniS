@@ -1,5 +1,4 @@
 # OpenShineTo
----
 
 Some core functions about shineto.
 
