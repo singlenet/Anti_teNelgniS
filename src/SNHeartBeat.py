@@ -121,4 +121,4 @@ class SNRegister_MAC(SNHeartBeat):
 
 
 if __name__ == '__main__':
-    print SNRegister_MAC('18058058888@HYXY.XY', '10.8.0.9').hexdigest()
+    print SNRegister_MAC('18058054395@HYXY.XY', '10.0.0.1').hexdigest()

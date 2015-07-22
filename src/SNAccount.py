@@ -44,4 +44,4 @@ def calc_pin(username, share_key=NKAccount['SHARE_KEY'], prefix='\x0D\x0A'):
     return pin
 
 if __name__ == '__main__':
-    print calc_pin(username='18058058888@HYXY.XY')
+    print calc_pin(username='18058888888@HYXY.XY')
