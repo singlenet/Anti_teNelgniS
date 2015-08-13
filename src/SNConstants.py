@@ -10,6 +10,12 @@ SNAccount = {
     'SHARE_KEY': base64.decodestring('c2luZ2xlbmV0MDE=')
 }
 
+HNSNAccount = {
+    'SHARE_KEY': base64.decodestring('aG5neDAx'),
+    'SEC_KEY': base64.decodestring('MDAwYzI5MjcwNzEy'),
+    'KEY_TABLE': base64.decodestring('YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY3ODkwWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkE6Xw==')
+}
+
 SNClient = {
     'CLIENT_VERSION': '1.2.16.20',
     'CLIENT_TYPE': base64.decodestring('c2luZ2xlTmV0')
