@@ -17,7 +17,7 @@ HNSNAccount = {
 }
 
 SNClient = {
-    'CLIENT_VERSION': '1.2.16.20',
+    'CLIENT_VERSION': '1.2.18.28',
     'CLIENT_TYPE': base64.decodestring('c2luZ2xlTmV0')
 }
 
