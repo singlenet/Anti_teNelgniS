@@ -16,7 +16,7 @@ def calc_pin(username, share_key=NKAccount['SHARE_KEY'], prefix='\x0D\x0A'):
     username = username.upper()
 
     time_div_by_five = int(time.time()) / 5
-    time_div_by_five = 288023653
+    # time_div_by_five = 288023653
 
     time_hash = [0] * 4
     for i in xrange(4):
