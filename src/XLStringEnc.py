@@ -33,12 +33,14 @@ class XLStringEnc(object):
             m = k * 2
             step = ciphertext[m:m + 2]
 
-            for i in xrange(16):
-                if self.base_key[i] == step[0]:
-                    break
-            for j in xrange(16):
-                if self.base_key[j] == step[1]:
-                    break
+            # for i in xrange(16):
+            #     if self.base_key[i] == step[0]:
+            #         break
+            # for j in xrange(16):
+            #     if self.base_key[j] == step[1]:
+            #         break
+            i = self.base_key.find(step[0])
+            j = self.base_key.find(step[1])
 
             # print step, i, j, m
             plaintext += chr(

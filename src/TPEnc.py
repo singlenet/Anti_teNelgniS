@@ -12,7 +12,8 @@ def security_encode(pwd, key='RDpbLfCPsJZ7fiv'):
     pwdl = len(pwd)
     charboxl = len(charbox)
 
-    times = keyl if keyl > pwdl else pwdl
+    # times = keyl if keyl > pwdl else pwdl
+    times = max(keyl, pwdl)
 
     ciphertext = ''
     for index in xrange(times):
