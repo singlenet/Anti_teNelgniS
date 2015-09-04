@@ -51,11 +51,11 @@ class SNHeartBeat(object):
         return timeflag
 
     def digest(self):
-        ramdata = struct.pack(self._fmt_str, self.magic_num,
+        rawdata = struct.pack(self._fmt_str, self.magic_num,
                               self.length, self.code,
                               self.timeflag, self.signature)
-        ramdata += self.attributes_data
-        return ramdata
+        rawdata += self.attributes_data
+        return rawdata
 
     def hexdigest(self):
         return self.digest().encode('hex')
