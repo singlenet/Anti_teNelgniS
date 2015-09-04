@@ -64,7 +64,6 @@ class SNHeartBeat(object):
 class SNThunderProtocol(SNHeartBeat):
 
     def __init__(self, username, ipaddress, timestamp, version=SNClient['CLIENT_VERSION']):
-        #timestamp = 1424526603
         attribute_list = [
             SNAttribute.CLIENT_IP_ADDRESS(ipaddress),
             SNAttribute.CLIENT_VERSION(version),
@@ -118,6 +117,21 @@ class SNRegister_MAC(SNHeartBeat):
         super(SNRegister_MAC, self).__init__(code=0x1,
                                              timestamp=0, attribute_list=attribute_list)
         self.timeflag = 0x1
+
+    @property
+    def signature(self):
+        salt = HBDefault['SIG_SALT_MAC']
+
+        temp_data = struct.pack(self._fmt_str, self.magic_num,
+                                self.length, self.code,
+                                self.timeflag, '\x00' * 16)
+        temp_data += self.attributes_data
+
+        m = hashlib.md5()
+        m.update(temp_data)
+        m.update(salt)
+
+        return m.digest()
 
 
 if __name__ == '__main__':

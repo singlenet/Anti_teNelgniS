@@ -22,8 +22,8 @@ SNClient = {
 }
 
 HBDefault = {
-    # 'SIG_SALT': base64.decodestring('TExXTFhB'),
     'SIG_SALT': base64.decodestring('TExXTFhBX1RQU0hBUkVTRUNSRVQ='),
+    'SIG_SALT_MAC': base64.decodestring('TExXTFhB'),
     'ADAPTER_INFO': 'AMD PCNET Family PCI Ethernet Adapter - 数据包计划程序微型端口',
     'DEFAULT_EXPLORER': 'IE 6.0.2900.5512',
     'MEMORY_SIZE': 0x000001FF,

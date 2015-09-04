@@ -150,6 +150,7 @@ class DEFAULT_EXPLORER(SNAttribute):
 
 
 class KEEPALIVE_DATA(SNAttribute):
+    last_data = None
 
     """
     keepalive_data = KEEPALIVE_DATA.get_keepalive_data()
@@ -163,13 +164,14 @@ class KEEPALIVE_DATA(SNAttribute):
 
     @classmethod
     def get_keepalive_data(cls, timestamp=int(time.time())):
-        salt = 'pjff'
+        salt = cls.last_data or 'pjff'
 
         m = hashlib.md5()
         m.update(struct.pack('>I', timestamp))
         m.update(salt)
 
-        return m.hexdigest()
+        cls.last_data = keepalive_data = m.hexdigest()
+        return keepalive_data
 
 
 class KEEPALIVE_TIME(SNAttribute):
