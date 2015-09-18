@@ -87,4 +87,4 @@ class SNStringEnc(XLStringEnc):
 
 if __name__ == '__main__':
     xl = XLStringEnc()
-    print xl.decrypt('e4b5faf2c04576af98fa3dd354d32da2')
+    print xl.decrypt('eb1ab586d3b5f22fe4680c5b98471049')

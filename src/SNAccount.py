@@ -11,7 +11,8 @@ from SNConstants import NKAccount
 def check_username(username):
     return True if re.search(r'\d{6,15}@[a-z]{2,4}\.xy', username, re.IGNORECASE) else False
 
-def calc_pin(username, share_key=NKAccount['SHARE_KEY'], prefix='\x0D\x0A'):
+def calc_pin(username, share_key=None, prefix='\x0D\x0A'):
+    share_key = share_key or NKAccount['SHARE_KEY']
     assert check_username(username=username)
     username = username.upper()
 

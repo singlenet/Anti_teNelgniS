@@ -20,10 +20,7 @@ class SNHeartBeat(object):
 
     @property
     def attributes_data(self):
-        attributes_data = ''
-        for attribute in self.attribute_list:
-            attributes_data += attribute.digest()
-        return attributes_data
+        return ''.join(map(lambda a:a.digest(), self.attribute_list))
 
     @property
     def length(self):
@@ -45,7 +42,8 @@ class SNHeartBeat(object):
         return m.digest()
 
     @classmethod
-    def calc_timeflag(cls, timestamp=int(time.time())):
+    def calc_timeflag(cls, timestamp=None):
+        timestamp = timestamp or int(time.time())
         temp_num = (((timestamp * 0x343FD) + 0x269EC3) & 0xFFFFFFFF)
         timeflag = (temp_num >> 0x10) & 0xFF
         return timeflag
@@ -63,7 +61,8 @@ class SNHeartBeat(object):
 
 class SNThunderProtocol(SNHeartBeat):
 
-    def __init__(self, username, ipaddress, timestamp, version=SNClient['CLIENT_VERSION']):
+    def __init__(self, username, ipaddress, timestamp, version=None):
+        version = version or SNClient['CLIENT_VERSION']
         attribute_list = [
             SNAttribute.CLIENT_IP_ADDRESS(ipaddress),
             SNAttribute.CLIENT_VERSION(version),

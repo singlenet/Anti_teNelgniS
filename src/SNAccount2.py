@@ -21,7 +21,9 @@ def hash_key(key_str):
     return result
 
 
-def new_calc_pin(username, share_key=HNSNAccount['SHARE_KEY'], sec_key=HNSNAccount['SEC_KEY'], timestamp=None):
+def new_calc_pin(username, share_key=None, sec_key=None, timestamp=None):
+    share_key = share_key or HNSNAccount['SHARE_KEY']
+    sec_key = sec_key or HNSNAccount['SEC_KEY']
     KEY_TABLE = HNSNAccount['KEY_TABLE']
 
     timestamp = (timestamp or int(time.time())) & 0xFFFFFFFF
@@ -38,7 +40,8 @@ def new_calc_pin(username, share_key=HNSNAccount['SHARE_KEY'], sec_key=HNSNAccou
     final_key += struct.pack('>H', timestamp & 0xFFFF)
     final_key += struct.pack('<H', second_hash)
 
-    final_table = map(ord, final_key)
+    # final_table = map(ord, final_key)
+    final_table = list(struct.unpack('4B', final_key))
 
     vectors = []
     for i in xrange(1, 8, 2):
