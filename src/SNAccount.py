@@ -9,7 +9,7 @@ from SNConstants import NKAccount
 # copy from https://github.com/nowind/sx_pi/
 
 def check_username(username):
-    return True if re.search(r'\d{6,15}@[a-z]{2,4}\.xy', username, re.IGNORECASE) else False
+    return True if re.search(r'\d{6,15}@[a-z]{1,4}\.xy', username, re.IGNORECASE) else False
 
 def calc_pin(username, share_key=None, prefix='\x0D\x0A'):
     share_key = share_key or NKAccount['SHARE_KEY']
