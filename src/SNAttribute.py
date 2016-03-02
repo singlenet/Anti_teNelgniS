@@ -165,7 +165,7 @@ class KEEPALIVE_DATA(SNAttribute):
     @classmethod
     def get_keepalive_data(cls, timestamp=None):
         timestamp = timestamp or int(time.time())
-        salt = cls.last_data or 'pjff'
+        salt = cls.last_data or 'wxgj'
 
         m = hashlib.md5()
         m.update(struct.pack('>I', timestamp))
