@@ -10,9 +10,9 @@
 #define SNConstants_h
 
 #define CLIENT_TYPE "singleNet"
-#define CLIENT_VERSION "1.2.18.28"
+#define CLIENT_VERSION "1.2.22.36"
 
-#define DEFAULT_KEEPALIVE_DATA "pjff"
+#define DEFAULT_KEEPALIVE_DATA "llwl"
 
 #define SIGNATURE_SLAT "LLWLXA_TPSHARESECRET"
 
